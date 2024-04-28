@@ -28,7 +28,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
     if reason is None:
         reason = 'no reason provided'
     await ctx.guild.ban(member)
-    await ctx.send(f'banned {member.mention} for {reason}')
+    await ctx.send(embed=bn)
 
 
 @client.command()
@@ -84,21 +84,21 @@ async def commands(ctx):
 
 @kick.error
 async def kick_error(ctx, error):
-    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red())
+    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red(), description='You are missing the permission to kick commands')
     if isinstance(error, MissingPermissions):
         await ctx.send(embed=perms)
 
 
 @ban.error
 async def ban_error(ctx, error):
-    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red())
+    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red(), description='You are missing the permission to ban commands')
     if isinstance(error, MissingPermissions):
         await ctx.send(embed=perms)
 
 
 @purge.error
 async def purge_error(ctx, error):
-    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red())
+    perms = discord.Embed(title='Lacking permissions', colour=discord.Color.red(), 'You are missing the permission to manage messages')
     if isinstance(error, MissingPermissions):
         await ctx.send(embed=perms)
 
