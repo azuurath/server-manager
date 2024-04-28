@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 from discord.ext.commands import MissingPermissions
 from discord.ext.commands import CommandNotFound
+from discord import DMChannel
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
